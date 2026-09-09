@@ -1,6 +1,5 @@
 *.class
 build/
 out/
-LAPORAN.md
 *.txt
 .DS_Store
