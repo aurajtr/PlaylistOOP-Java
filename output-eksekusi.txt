@@ -1,0 +1,54 @@
+SISTEM MANAJEMEN PLAYLIST MUSIK SEDERHANA
+Tugas Kelompok 1 - Data Structures and Algorithm Analysis
+
+==============================================================
+ BAGIAN 1 - ADMIN MENAMBAHKAN LAGU
+==============================================================
+Pengguna aktif : Andi Wijaya (ADM-001) - peran Admin Playlist
+  Hak akses: menambah lagu baru, melihat seluruh daftar lagu.
+
+  [OK] Andi Wijaya menambahkan lagu "Bohemian Rhapsody" - Queen
+  [OK] Andi Wijaya menambahkan lagu "Shape of You" - Ed Sheeran
+  [OK] Andi Wijaya menambahkan lagu "Yellow" - Coldplay
+  [OK] Andi Wijaya menambahkan lagu "Laskar Pelangi" - Nidji
+  [OK] Andi Wijaya menambahkan lagu "Hati-Hati di Jalan" - Tulus
+
+==============================================================
+ BAGIAN 2 - DAFTAR LAGU DALAM PLAYLIST
+==============================================================
+Daftar lagu pada playlist "Lagu Favorit Kelompok" (5/8 lagu)
+  No  Judul                  Artis           Durasi
+  ---------------------------------------------------------
+  1   Bohemian Rhapsody      Queen            5.55 menit
+  2   Shape of You           Ed Sheeran       3.53 menit
+  3   Yellow                 Coldplay         4.29 menit
+  4   Laskar Pelangi         Nidji            4.42 menit
+  5   Hati-Hati di Jalan     Tulus            5.02 menit
+
+==============================================================
+ BAGIAN 3 - MEMBER MENELUSURI PLAYLIST
+==============================================================
+Pengguna aktif : Bunga Lestari (MBR-001) - peran Pengguna Playlist
+  Hak akses: melihat daftar lagu, mencari lagu, menghitung rata-rata durasi.
+
+Pencarian lagu berjudul "Yellow" oleh Bunga Lestari:
+  [DITEMUKAN]
+  Judul  : Yellow
+  Artis  : Coldplay
+  Durasi : 4.29 menit
+
+Pencarian lagu berjudul "Blinding Lights" oleh Bunga Lestari:
+  [TIDAK DITEMUKAN] Lagu tersebut tidak ada di dalam playlist.
+
+Rata-rata durasi 5 lagu: 4.56 menit
+
+==============================================================
+ BAGIAN 4 - DEMONSTRASI POLYMORPHISM
+==============================================================
+Pengguna aktif : Andi Wijaya (ADM-001) - peran Admin Playlist
+  Hak akses: menambah lagu baru, melihat seluruh daftar lagu.
+
+Pengguna aktif : Bunga Lestari (MBR-001) - peran Pengguna Playlist
+  Hak akses: melihat daftar lagu, mencari lagu, menghitung rata-rata durasi.
+
+Program selesai.
