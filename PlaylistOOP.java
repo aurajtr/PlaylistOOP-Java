@@ -1,22 +1,16 @@
 /* =====================================================================
  * Data Structures and Algorithm Analysis
- * Tugas Kelompok ke-1 (Week 3) - Introduction to OOP & Data Structures
+ * Tugas Kelompok 1 - Introduction to OOP & Data Structures
  * Nama File : PlaylistOOP.java
  * Topik     : Sistem Manajemen Playlist Musik Sederhana
  *
- * IDENTITAS KELOMPOK
- *   1. <Nama Anggota 1>  -  <NIM>
- *   2. <Nama Anggota 2>  -  <NIM>
- *   3. <Nama Anggota 3>  -  <NIM>
- *   4. <Nama Anggota 4>  -  <NIM>
+ * GROUP 1
+ * 1 AURA JATRA RATU SEMENDAWAI - 2902811884
+ * 2 MUHAMMAD SETIADI PRATAMA - 2902807962
+ * 3 MUH FAISAL BIMANTARA - 2902827232
+ * 4 GAGE - 2902807395
+ * 5 AFTA PASMA LOHDRI - 2902827150
  *
- * Konsep OOP yang diterapkan:
- *   - Enkapsulasi : seluruh atribut private + akses lewat getter/setter
- *   - Inheritance : User (parent) diturunkan menjadi Admin dan Member
- *   - Polymorphism: method overriding (getPeran, tampilkanHakAkses) dan
- *                   method overloading (tambahLagu) serta upcasting
- *                   melalui array bertipe User
- *   - Array       : Playlist menyimpan kumpulan objek Lagu di dalam array
  * ===================================================================== */
 
 import java.util.Locale;
