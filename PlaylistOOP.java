@@ -1,3 +1,18 @@
+/* =====================================================================
+ * Data Structures and Algorithm Analysis
+ * Tugas Kelompok 1 - Introduction to OOP & Data Structures
+ * Nama File : PlaylistOOP.java
+ * Topik     : Sistem Manajemen Playlist Musik Sederhana
+ *
+ * GROUP 1
+ * 1 AURA JATRA RATU SEMENDAWAI - 2902811884
+ * 2 MUHAMMAD SETIADI PRATAMA - 2902807962
+ * 3 MUH FAISAL BIMANTARA - 2902827232
+ * 4 GAGE - 2902807395
+ * 5 AFTA PASMA LOHDRI - 2902827150
+ *
+ * ===================================================================== */
+
 import java.util.Locale;
 
 /* =====================================================================
