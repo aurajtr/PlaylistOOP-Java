@@ -12,23 +12,12 @@
  *   4. GAGE                        -  2902807395
  *   5. AFTA PASMA LOHDRI           -  2902827150
  *
- * Operasi array yang diimplementasikan:
+ * Operasi array:
  *   - Traversal  : menelusuri seluruh elemen array satu per satu   -> O(n)
  *   - Searching  : linear search berdasarkan judul lagu            -> O(n)
  *   - Insertion  : menyisipkan lagu pada posisi kosong berikutnya  -> O(1)
  *   - Deletion   : menghapus lagu lalu menggeser elemen agar rapat -> O(n)
  *   - Sorting    : Selection Sort berdasarkan durasi (ascending)   -> O(n^2)
- *
- * Class Lagu TIDAK ditulis ulang di file ini, melainkan dipakai ulang dari
- * Lagu.java milik Tugas Kelompok 1 (sesuai instruksi "Gunakan kembali dari
- * Tugas Kelompok 1"). Kedua file berada pada folder yang sama sehingga
- * berbagi default package dan saling terlihat tanpa perlu import.
- *
- * Berkas yang dibutuhkan: PlaylistArray.java + Lagu.java
- *
- * Cara menjalankan:
- *   javac PlaylistArray.java Lagu.java
- *   java PlaylistArray
  * ===================================================================== */
 
 import java.util.Locale;
@@ -36,17 +25,10 @@ import java.util.Scanner;
 
 /* =====================================================================
  * CLASS PLAYLISTARRAY
- * Mengelola kumpulan objek Lagu di dalam ARRAY STATIS berkapasitas 10.
- *
- * Kenapa butuh atribut jumlahLagu?
- *   Panjang array (playlist.length) SELALU 10 sejak dibuat, sedangkan isi
- *   nyatanya bisa kurang dari itu. Variabel jumlahLagu menandai batas data
- *   yang valid, yaitu indeks 0 .. jumlahLagu-1. Semua operasi array di
- *   bawah ini bekerja pada rentang tersebut, bukan pada seluruh 10 slot.
  * ===================================================================== */
 public class PlaylistArray {
 
-    // Kapasitas maksimum array sesuai ketentuan tugas (maksimal 10 lagu)
+    // Kapasitas maksimal 10 lagu
     private static final int MAKS_LAGU = 10;
 
     private Lagu[] playlist;   // array statis penampung objek Lagu
@@ -55,8 +37,7 @@ public class PlaylistArray {
 
     /*
      * Constructor.
-     * Menyiapkan array kosong berukuran tetap MAKS_LAGU dan menandai bahwa
-     * belum ada data yang valid (jumlahLagu = 0).
+     * Menyiapkan array kosong. belum ada data yang valid (jumlahLagu = 0).
      */
     public PlaylistArray() {
         this.playlist = new Lagu[MAKS_LAGU];
@@ -68,9 +49,7 @@ public class PlaylistArray {
      * OPERASI 1 - TRAVERSAL
      * void tampilkanSemuaLagu()
      *
-     * Logika: mulai dari indeks 0, kunjungi setiap elemen valid tepat satu
-     * kali sampai indeks jumlahLagu-1, lalu cetak isinya. Tidak ada elemen
-     * yang dilewati dan tidak ada yang dikunjungi dua kali.
+     * mulai dari indeks 0, kunjungi setiap elemen valid tepat satu kali sampai indeks jumlahLagu-1, lalu cetak isinya.
      *
      * Kompleksitas waktu : O(n)  -> loop berjalan persis n kali
      * Kompleksitas ruang : O(1)  -> tidak ada array bantuan
@@ -79,7 +58,7 @@ public class PlaylistArray {
         System.out.println();
         System.out.println("--- DAFTAR LAGU DALAM PLAYLIST ---");
 
-        // Kasus khusus: array masih kosong, tidak ada yang ditelusuri
+        // Special case: array masih kosong, tidak ada yang ditelusuri
         if (jumlahLagu == 0) {
             System.out.println("  (Playlist masih kosong. Silakan tambah lagu terlebih dahulu.)");
             return;
@@ -88,7 +67,7 @@ public class PlaylistArray {
         System.out.println(String.format("  %-3s %-22s %-15s %s", "No", "Judul", "Artis", "Durasi"));
         System.out.println("  ------------------------------------------------------------");
 
-        // Inilah proses TRAVERSAL: satu kali lewat dari awal sampai akhir data
+        // Proses TRAVERSAL: satu kali lewat dari awal sampai akhir
         for (int i = 0; i < jumlahLagu; i++) {
             playlist[i].tampilkanRingkas(i + 1);
         }
@@ -101,11 +80,8 @@ public class PlaylistArray {
      * OPERASI 2 - INSERTION
      * void tambahLagu()
      *
-     * Logika: lagu baru selalu ditempatkan pada slot kosong pertama, yaitu
-     * indeks jumlahLagu (tepat setelah elemen terakhir). Karena menyisipkan
-     * di BELAKANG, tidak ada satu pun elemen lama yang perlu digeser.
-     * Sebelum menyisipkan, program wajib memeriksa apakah array sudah penuh
-     * agar tidak terjadi ArrayIndexOutOfBoundsException.
+     * Lagu baru selalu ditempatkan pada slot kosong pertama, yaitu indeks jumlahLagu (tepat setelah elemen terakhir). 
+     * Sebelum menyisipkan, wajib memeriksa apakah array sudah penuh agar tidak terjadi ArrayIndexOutOfBoundsException.
      *
      * Kompleksitas waktu : O(1)  -> satu penugasan, tanpa perulangan
      * Kompleksitas ruang : O(1)
@@ -141,7 +117,7 @@ public class PlaylistArray {
             return;
         }
 
-        // INTI OPERASI INSERTION: isi slot kosong berikutnya, lalu naikkan counter
+        // OPERASI INSERTION: isi slot kosong berikutnya, lalu naikkan counter
         playlist[jumlahLagu] = new Lagu(judul, artis, durasi);
         jumlahLagu++;
 
@@ -153,14 +129,9 @@ public class PlaylistArray {
      * OPERASI 3 - DELETION
      * void hapusLagu()
      *
-     * Logika dua tahap:
-     *   1) CARI posisi lagu memakai linear search (judul, abaikan huruf
-     *      besar/kecil).
-     *   2) GESER setiap elemen di sebelah kanan posisi tersebut satu langkah
-     *      ke kiri, sehingga lubang bekas penghapusan tertutup dan data
-     *      tetap rapat (tidak ada slot kosong di tengah array).
-     *   Slot terakhir diset null agar tidak menyisakan referensi ganda,
-     *   lalu jumlahLagu dikurangi satu.
+     *   1) CARI posisi lagu memakai linear search (judul, abaikan huruf besar/kecil).
+     *   2) GESER setiap elemen di sebelah kanan posisi tersebut satu langkah ke kiri, sampai lubang bekas penghapusan tertutup dan data tetap rapat (tidak ada slot kosong di tengah array).
+     *   Slot terakhir diset null agar tidak menyisakan referensi ganda, lalu jumlahLagu dikurangi satu.
      *
      * Kompleksitas waktu : O(n)  -> pencarian O(n) + penggeseran O(n)
      * Kompleksitas ruang : O(1)  -> penggeseran dilakukan in-place
@@ -187,10 +158,6 @@ public class PlaylistArray {
         String judulTerhapus = playlist[posisi].getJudul();
 
         // Tahap 2 - GESER elemen setelah posisi satu langkah ke kiri.
-        // Contoh menghapus indeks 1 dari [A][B][C][D]:
-        //   playlist[1] = playlist[2] -> [A][C][C][D]
-        //   playlist[2] = playlist[3] -> [A][C][D][D]
-        //   slot terakhir dikosongkan -> [A][C][D][ ]
         for (int i = posisi; i < jumlahLagu - 1; i++) {
             playlist[i] = playlist[i + 1];
         }
@@ -208,14 +175,10 @@ public class PlaylistArray {
      * OPERASI 4 - SEARCHING (LINEAR SEARCH)
      * void cariLagu()
      *
-     * Logika: bandingkan judul yang dicari dengan elemen ke-0, ke-1, dan
-     * seterusnya sampai ketemu atau data habis. Disebut linear karena
-     * penelusurannya lurus satu arah tanpa melompat; syaratnya pun ringan,
-     * data TIDAK perlu dalam keadaan terurut.
-     *
+     * Membandingkan judul yang dicari dengan elemen ke-0, ke-1, dan seterusnya sampai ketemu atau data habis.
+     * 
      * Kompleksitas waktu : O(1) best case  -> ketemu di elemen pertama
-     *                      O(n) average & worst case -> ketemu di akhir
-     *                                                   atau tidak ada
+     *                      O(n) average & worst case -> ketemu di akhir atau tidak ada
      * Kompleksitas ruang : O(1)
      * ================================================================= */
     public void cariLagu() {
@@ -230,10 +193,10 @@ public class PlaylistArray {
         System.out.print("Masukkan judul lagu yang dicari: ");
         String judul = input.nextLine().trim();
 
-        int perbandingan = 0; // penghitung langkah, bukti nyata perilaku O(n)
+        int perbandingan = 0; // penghitung langkah
         int posisi = -1;
 
-        // INTI LINEAR SEARCH: periksa elemen satu per satu dari kiri ke kanan
+        // LINEAR SEARCH: periksa elemen satu per satu dari kiri ke kanan
         for (int i = 0; i < jumlahLagu; i++) {
             perbandingan++;
             if (playlist[i].getJudul().equalsIgnoreCase(judul)) {
@@ -258,22 +221,9 @@ public class PlaylistArray {
      * FITUR TAMBAHAN - SORTING (SELECTION SORT, ASCENDING)
      * void urutkanLaguBerdasarkanDurasi()
      *
-     * Logika Selection Sort:
-     *   Untuk setiap posisi i (0..n-2), telusuri sisa array di sebelah
-     *   kanannya untuk mencari elemen dengan durasi TERKECIL, lalu tukar
-     *   elemen terkecil itu dengan elemen di posisi i. Setelah putaran ke-i
-     *   selesai, bagian array 0..i dijamin sudah terurut.
+     * Untuk setiap posisi i (0..n-2), telusuri sisa array di sebelah kanannya untuk mencari elemen dengan durasi TERKECIL, lalu tukar elemen terkecil itu dengan elemen di posisi i.
      *
-     * Kenapa O(n^2)?
-     *   Terdapat dua perulangan bersarang. Loop luar berjalan (n-1) kali dan
-     *   loop dalam rata-rata berjalan n/2 kali, sehingga total perbandingan
-     *   = (n-1) + (n-2) + ... + 1 = n(n-1)/2. Suku dominannya n^2/2, dan
-     *   karena Big O mengabaikan konstanta hasilnya O(n^2). Jumlah langkah
-     *   ini tidak bergantung pada kondisi awal data, jadi best, average, dan
-     *   worst case sama-sama O(n^2).
-     *
-     * Kompleksitas ruang : O(1) -> pengurutan in-place, hanya butuh satu
-     *                              variabel sementara untuk menukar
+     * Kompleksitas ruang : O(1) -> pengurutan in-place, hanya butuh satu variabel sementara untuk menukar
      * ================================================================= */
     public void urutkanLaguBerdasarkanDurasi() {
         System.out.println();
@@ -327,9 +277,7 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * HELPER - cariIndeks()
-     * Linear search versi internal yang MENGEMBALIKAN indeks (bukan
-     * mencetak). Dipakai ulang oleh hapusLagu() sehingga logika pencarian
-     * tidak perlu ditulis dua kali.
+     * Linear search versi internal yang MENGEMBALIKAN indeks (bukan mencetak).
      * Mengembalikan -1 bila judul tidak ditemukan.  -> O(n)
      * ----------------------------------------------------------------- */
     private int cariIndeks(String judul) {
@@ -343,8 +291,7 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * HELPER - cetakDaftarRingkas()
-     * Traversal sederhana tanpa header/footer, dipakai untuk menampilkan
-     * perbandingan sebelum dan sesudah pengurutan.  -> O(n)
+     * Traversal sederhana tanpa header/footer, dipakai untuk menampilkan perbandingan sebelum dan sesudah pengurutan.  -> O(n)
      * ----------------------------------------------------------------- */
     private void cetakDaftarRingkas() {
         for (int i = 0; i < jumlahLagu; i++) {
@@ -354,9 +301,7 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * HELPER - bacaDurasi()
-     * Membaca durasi sebagai teks lalu mengonversinya sendiri, bukan lewat
-     * nextDouble(). Tujuannya agar salah ketik (misal pengguna mengetik
-     * huruf) tidak membuat program berhenti karena InputMismatchException.
+     * Membaca durasi sebagai teks lalu mengonversinya sendiri.
      * Mengembalikan -1 sebagai penanda input tidak valid.
      * ----------------------------------------------------------------- */
     private double bacaDurasi() {
@@ -370,9 +315,7 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * HELPER - isiDataAwal()
-     * Mengisi playlist dengan beberapa lagu contoh memakai operasi
-     * INSERTION yang sama, supaya saat program pertama kali dijalankan
-     * menu Traversal, Searching, dan Sorting langsung ada datanya.
+     * Mengisi playlist dengan beberapa lagu contoh memakai operasi INSERTION yang sama.
      * ----------------------------------------------------------------- */
     private void isiDataAwal() {
         playlist[jumlahLagu++] = new Lagu("Perfect", "Ed Sheeran", 4.23);
@@ -397,8 +340,7 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * jalankan()
-     * Loop utama program: tampilkan menu, baca pilihan, jalankan operasi
-     * array yang sesuai, ulangi sampai pengguna memilih Keluar.
+     * Loop utama program: tampilkan menu, baca pilihan, jalankan operasi array yang sesuai, ulangi sampai pengguna memilih Keluar.
      * ----------------------------------------------------------------- */
     public void jalankan() {
         System.out.println("=====================================================");
@@ -448,8 +390,6 @@ public class PlaylistArray {
 
     /* -----------------------------------------------------------------
      * MAIN
-     * Titik masuk program: membuat satu objek PlaylistArray lalu
-     * menjalankan loop menunya.
      * ----------------------------------------------------------------- */
     public static void main(String[] args) {
         new PlaylistArray().jalankan();
