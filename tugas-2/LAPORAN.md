@@ -4,6 +4,7 @@
 **Topik (Week 4):** Arrays and its Operations
 **Kelas:** LYCA - LEC
 **Nama File Program:** `PlaylistArray.java`
+**Berkas yang dibutuhkan:** `PlaylistArray.java` + `Lagu.java` (keduanya di root repositori)
 
 ## Identitas Kelompok (Group 1)
 
@@ -33,8 +34,10 @@ indeks `0` sampai `jumlahLagu - 1`. Seluruh operasi di bawah hanya bekerja pada 
 
 | Class | Peran |
 |-------|-------|
-| `Lagu` | Entitas satu lagu (judul, artis, durasi). Dipakai ulang dari Tugas 1, seluruh atribut `private` dengan getter/setter. Memiliki `tampilkanInfo()` dan `tampilkanRingkas()`. |
+| `Lagu` | Entitas satu lagu (judul, artis, durasi). **Dipakai ulang langsung dari `Lagu.java` milik Tugas Kelompok 1** — tidak ditulis ulang, sesuai instruksi "Gunakan kembali dari Tugas Kelompok 1". Seluruh atribut `private` dengan getter/setter, memiliki `tampilkanInfo()` dan `tampilkanRingkas()`. |
 | `PlaylistArray` | Pengelola array lagu sekaligus titik masuk program. Berisi `tampilkanSemuaLagu()`, `tambahLagu()`, `hapusLagu()`, `cariLagu()`, dan `urutkanLaguBerdasarkanDurasi()`. |
+
+Kedua file berada di folder yang sama sehingga berbagi *default package* Java dan saling terlihat tanpa perlu `import`. Dengan cara ini `class Lagu` hanya ada satu definisi untuk seluruh repositori, dipakai bersama oleh Tugas 1 dan Tugas 2.
 
 ---
 
@@ -142,9 +145,11 @@ menolak penambahan baru, tidak bisa membesar sendiri seperti `ArrayList` atau li
 ## 5. Cara Menjalankan
 
 ```bash
-javac PlaylistArray.java
+javac PlaylistArray.java Lagu.java
 java PlaylistArray
 ```
+
+Atau compile seluruh berkas repositori sekaligus dengan `javac *.java`.
 
 Program dijalankan dengan dua lagu contoh (*Perfect* dan *Shivers*) agar menu Traversal,
 Searching, dan Sorting langsung dapat diuji.

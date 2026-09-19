@@ -19,94 +19,20 @@
  *   - Deletion   : menghapus lagu lalu menggeser elemen agar rapat -> O(n)
  *   - Sorting    : Selection Sort berdasarkan durasi (ascending)   -> O(n^2)
  *
+ * Class Lagu TIDAK ditulis ulang di file ini, melainkan dipakai ulang dari
+ * Lagu.java milik Tugas Kelompok 1 (sesuai instruksi "Gunakan kembali dari
+ * Tugas Kelompok 1"). Kedua file berada pada folder yang sama sehingga
+ * berbagi default package dan saling terlihat tanpa perlu import.
+ *
+ * Berkas yang dibutuhkan: PlaylistArray.java + Lagu.java
+ *
  * Cara menjalankan:
- *   javac PlaylistArray.java
+ *   javac PlaylistArray.java Lagu.java
  *   java PlaylistArray
  * ===================================================================== */
 
 import java.util.Locale;
 import java.util.Scanner;
-
-/* =====================================================================
- * CLASS LAGU
- * Dipakai ulang dari Tugas Kelompok 1. Merepresentasikan satu entitas
- * lagu. Menerapkan ENKAPSULASI: seluruh atribut private dan hanya bisa
- * diakses melalui getter/setter sehingga data objek tidak bisa dirusak
- * dari luar class.
- * ===================================================================== */
-class Lagu {
-    // Atribut private -> inti dari enkapsulasi (information hiding)
-    private String judul;
-    private String artis;
-    private double durasi; // satuan: menit
-
-    /*
-     * Constructor.
-     * Pengisian durasi sengaja dilewatkan ke setDurasi() agar aturan
-     * validasi hanya ditulis satu kali (tidak duplikat).
-     */
-    public Lagu(String judul, String artis, double durasi) {
-        this.judul = judul;
-        this.artis = artis;
-        this.setDurasi(durasi);
-    }
-
-    // ---------------------- GETTER ----------------------
-    public String getJudul() {
-        return judul;
-    }
-
-    public String getArtis() {
-        return artis;
-    }
-
-    public double getDurasi() {
-        return durasi;
-    }
-
-    // ---------------------- SETTER ----------------------
-    public void setJudul(String judul) {
-        this.judul = judul;
-    }
-
-    public void setArtis(String artis) {
-        this.artis = artis;
-    }
-
-    /*
-     * Setter durasi dengan validasi: durasi lagu tidak mungkin negatif,
-     * sehingga nilai tidak masuk akal ditolak dan diganti 0.
-     */
-    public void setDurasi(double durasi) {
-        if (durasi < 0) {
-            System.out.println("[!] Durasi tidak valid untuk lagu \"" + judul + "\". Nilai diset ke 0.");
-            this.durasi = 0;
-        } else {
-            this.durasi = durasi;
-        }
-    }
-
-    /*
-     * Method tampilkanInfo().
-     * Mencetak seluruh informasi lagu dalam format multi-baris yang mudah
-     * dibaca. Dipakai saat pengguna meminta DETAIL satu lagu (hasil cari).
-     */
-    public void tampilkanInfo() {
-        System.out.println("  Judul  : " + judul);
-        System.out.println("  Artis  : " + artis);
-        System.out.println("  Durasi : " + String.format(Locale.US, "%.2f", durasi) + " menit");
-    }
-
-    /*
-     * Method tampilkanRingkas().
-     * Mencetak informasi lagu dalam SATU baris bernomor, dipakai ketika
-     * menampilkan seluruh isi playlist agar output tetap rapi sejajar.
-     */
-    public void tampilkanRingkas(int nomor) {
-        System.out.println(String.format(Locale.US, "  %-3d %-24s %-18s %5.2f menit",
-                nomor, judul, artis, durasi));
-    }
-}
 
 /* =====================================================================
  * CLASS PLAYLISTARRAY
@@ -159,7 +85,7 @@ public class PlaylistArray {
             return;
         }
 
-        System.out.println(String.format("  %-3s %-24s %-18s %s", "No", "Judul", "Artis", "Durasi"));
+        System.out.println(String.format("  %-3s %-22s %-15s %s", "No", "Judul", "Artis", "Durasi"));
         System.out.println("  ------------------------------------------------------------");
 
         // Inilah proses TRAVERSAL: satu kali lewat dari awal sampai akhir data

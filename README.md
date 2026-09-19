@@ -18,7 +18,7 @@ Kelas: **LYCA - LEC**
 | Tugas | Topik | Lokasi | Cara menjalankan |
 |-------|-------|--------|------------------|
 | Kelompok 1 (Week 3) | Introduction to OOP & Data Structures | root repositori | `javac PlaylistOOP.java && java PlaylistOOP` |
-| Kelompok 2 (Week 4) | Arrays and its Operations | [`tugas-2/`](tugas-2/) | `cd tugas-2 && javac PlaylistArray.java && java PlaylistArray` |
+| Kelompok 2 (Week 4) | Arrays and its Operations | `PlaylistArray.java` + `Lagu.java` (root) | `javac PlaylistArray.java Lagu.java && java PlaylistArray` |
 
 ---
 
@@ -38,9 +38,11 @@ Pengembangan dari Tugas 1 dengan fokus pada **operasi dasar array**: Traversal, 
 Data disimpan pada array statis berkapasitas maksimal 10 lagu.
 
 ```bash
-cd tugas-2
-javac PlaylistArray.java
+javac PlaylistArray.java Lagu.java
 java PlaylistArray
 ```
 
-Analisis kompleksitas waktu (Big O) tiap operasi ada di [`tugas-2/LAPORAN.md`](tugas-2/LAPORAN.md).
+`class Lagu` tidak ditulis ulang — `PlaylistArray.java` memakai ulang `Lagu.java` dari
+Tugas 1, sesuai instruksi tugas. Berkas laporan ada di folder [`tugas-2/`](tugas-2/).
+
+Analisis kompleksitas waktu (Big O) tiap operasi ada di [`tugas-2/LAPORAN.md`](tugas-2/LAPORAN.md), contoh output tiap menu di [`tugas-2/CONTOH-OUTPUT.md`](tugas-2/CONTOH-OUTPUT.md).

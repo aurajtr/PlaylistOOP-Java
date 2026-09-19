@@ -1,6 +1,8 @@
 # Contoh Output Eksekusi
 
-Acuan hasil menjalankan `java PlaylistArray`. Pakai sebagai panduan saat mengambil
+Acuan hasil menjalankan `java PlaylistArray`.
+Program berada di **root repositori** bersama `Lagu.java`:
+`javac PlaylistArray.java Lagu.java && java PlaylistArray`. Pakai sebagai panduan saat mengambil
 **screenshot tiap operasi** untuk dikumpulkan ke LMS.
 
 Bagian bertanda `<--` adalah teks yang diketik pengguna.
@@ -30,10 +32,10 @@ Pilih menu:
 Pilih menu: 1                                          <--
 
 --- DAFTAR LAGU DALAM PLAYLIST ---
-  No  Judul                    Artis              Durasi
+  No  Judul                  Artis           Durasi
   ------------------------------------------------------------
-  1   Perfect                  Ed Sheeran          4.23 menit
-  2   Shivers                  Ed Sheeran          3.50 menit
+  1   Perfect                Ed Sheeran       4.23 menit
+  2   Shivers                Ed Sheeran       3.50 menit
   ------------------------------------------------------------
   Total: 2 dari 10 slot terisi.
 ```
@@ -50,11 +52,11 @@ Masukkan durasi (menit): 4.10                          <--
   [OK] Lagu berhasil ditambahkan pada posisi ke-3!
 
 --- DAFTAR LAGU DALAM PLAYLIST ---
-  No  Judul                    Artis              Durasi
+  No  Judul                  Artis           Durasi
   ------------------------------------------------------------
-  1   Perfect                  Ed Sheeran          4.23 menit
-  2   Shivers                  Ed Sheeran          3.50 menit
-  3   Yellow                   Coldplay            4.10 menit
+  1   Perfect                Ed Sheeran       4.23 menit
+  2   Shivers                Ed Sheeran       3.50 menit
+  3   Yellow                 Coldplay         4.10 menit
   ------------------------------------------------------------
   Total: 3 dari 10 slot terisi.
 ```
@@ -94,14 +96,14 @@ Pilih menu: 5                                          <--
 --- URUTKAN LAGU BERDASARKAN DURASI (ASCENDING) ---
 
 >> SEBELUM PENGURUTAN:
-  1   Perfect                  Ed Sheeran          4.23 menit
-  2   Shivers                  Ed Sheeran          3.50 menit
-  3   Yellow                   Coldplay            4.10 menit
+  1   Perfect                Ed Sheeran       4.23 menit
+  2   Shivers                Ed Sheeran       3.50 menit
+  3   Yellow                 Coldplay         4.10 menit
 
 >> SESUDAH PENGURUTAN:
-  1   Shivers                  Ed Sheeran          3.50 menit
-  2   Yellow                   Coldplay            4.10 menit
-  3   Perfect                  Ed Sheeran          4.23 menit
+  1   Shivers                Ed Sheeran       3.50 menit
+  2   Yellow                 Coldplay         4.10 menit
+  3   Perfect                Ed Sheeran       4.23 menit
 
   Statistik Selection Sort untuk n = 3 lagu:
     - Jumlah perbandingan : 3  (sesuai rumus n(n-1)/2 = 3)
@@ -120,10 +122,10 @@ Masukkan judul lagu yang ingin dihapus: Perfect        <--
        Elemen setelahnya sudah digeser agar data tetap rapat.
 
 --- DAFTAR LAGU DALAM PLAYLIST ---
-  No  Judul                    Artis              Durasi
+  No  Judul                  Artis           Durasi
   ------------------------------------------------------------
-  1   Shivers                  Ed Sheeran          3.50 menit
-  2   Yellow                   Coldplay            4.10 menit
+  1   Shivers                Ed Sheeran       3.50 menit
+  2   Yellow                 Coldplay         4.10 menit
   ------------------------------------------------------------
   Total: 2 dari 10 slot terisi.
 ```
